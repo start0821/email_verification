@@ -1,0 +1,7 @@
+<h1>hi</h1>
+<form class="" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <!-- <label for="input">Nick name:</label> <input type="text" name="nickname" value=""> 여기에는 실명을 입력해주세요 -->
+  <input type="submit" name="submit" value="제출">
+</form>
