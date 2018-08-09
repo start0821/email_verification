@@ -11,7 +11,10 @@ from django.core.mail import EmailMessage
 from django.utils.encoding import force_bytes
 
 class UserCreateForm(UserCreationForm):
-
+    email = forms.EmailField(required=True,
+                             label='',
+                             widget=forms.TextInput(attrs={'placeholder':"Email Address",'class':"form-control"}),
+                             )
     class Meta:
         model = User
         fields = ('email', 'username', 'first_name' , 'last_name', )

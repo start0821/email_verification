@@ -13,6 +13,9 @@ import logging
 # Create your views here.
 
 
+def sign_in(request):
+    return render(request, 'registration/sec03.html', {}) 
+
 class UserCreateView(CreateView):
     template_name = 'registration/register.html'
     form_class = WebUserCreationForm

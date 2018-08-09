@@ -12,4 +12,9 @@ urlpatterns = [
         views.UserActivateView.as_view(),
         name='activate'
     ),
+    url(r'^sign_in/$', views.sign_in, name='sign_in'),
+    # url(r'^search/$', views.sign_in, name='sign_in'),
+    # url(r'^information/$', views.sign_in, name='sign_in'),
+    
+    
 ]
