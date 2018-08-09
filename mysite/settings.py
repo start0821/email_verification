@@ -17,27 +17,17 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 import json
+# print(BASE_DIR)
 
-from django.core.exceptions import ImproperlyConfigured
 
+# import keys from json file
 with open(BASE_DIR + "/secret.json") as f:
-    secrets = json.loads(f.read())
-
-
-# Keep secret keys in secrets.json
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {0} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-SECRET_KEY = get_secret("SECRET_KEY")
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
+    secrets = json.load(f)
+# secrets = json.loads(BASE_DIR + "/secret.json")
+## /email_verification/secret.json
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY  = get_secret("SECRET_KEY")
+SECRET_KEY  = secrets['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -140,6 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 # email password token timeout days
 PASSWORD_RESET_TIMEOUT_DAYS = 1
@@ -148,6 +139,8 @@ PASSWORD_RESET_TIMEOUT_DAYS = 1
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = secrets['EMAIL_HOST_USER'] 
+EMAIL_HOST_PASSWORD = secrets['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
+# print(secrets['EMAIL_HOST_PASSWORD'])
+print ("verify")
