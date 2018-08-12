@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script> -->
   <script type="text/javascript" src="scripts.js"></script>
-  
-  
+
+
   <header class="main_h">
 
       <div class="row_h">
@@ -38,12 +38,49 @@
   	</row>
 
   </header>
-  
-  <div class="wrapper">   
+
+  <div class="wrapper">
     <form class="form-signin" method="post">
+      {% if form.username.errors %}
+          {{form.username.errors}}
+      {% endif %}
+      {% if form.email.errors %}
+          {{form.email.errors}}
+      {% endif %}
+      {% if form.first_name.errors %}
+          {{form.first_name.errors}}
+      {% endif %}
+      {% if form.last_name.errors %}
+          {{form.last_name.errors}}
+      {% endif %}
+      {% if form.password1.errors %}
+          {{form.password1.errors}}
+      {% endif %}
+      {% if form.password2.errors %}
+          {{form.password2.errors}}
+      {% endif %}
+      {% if form.terms.errors %}
+          {{form.terms.errors}}
+      {% endif %}
+      {% if form.privacy.errors %}
+          {{form.privacy.errors}}
+      {% endif %}
       <h2 class="form-signin-heading">Login E Da</h2>
       {% csrf_token %}
-      {{ form.as_p }}
+      {{ form.username }}   <!-- input 태그를 수정하고 싶으면 User/forms.py에서 class UserCreateForm,WebUserCreationForm 에 있는
+                                      username = forms.CharField(required=True,
+                                                                   label='',
+                                                                   widget=forms.TextInput(attrs={'placeholder':"아이디",'class':"form-control"}),
+                                                                   )
+
+                                                        widget에 있는 부분에 태그를 추가하던지 삭제하던지 하면 됩니다.-->
+      {{ form.email }}
+      {{ form.first_name }}
+      {{ form.last_name }}
+      {{ form.password1 }}
+      {{ form.password2 }}
+      <label for="id_terms">Terms of service:{{ form.terms }}</label>
+      <label for="id_privacy">Privacy policy:{{ form.privacy }}</label>
       <!-- <label for="input">Nick name:</label> <input type="text" name="nickname" value=""> 여기에는 실명을 입력해주세요 -->
       <input type="submit" name="submit" value="제출">
   </form>

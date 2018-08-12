@@ -11,13 +11,27 @@ from django.core.mail import EmailMessage
 from django.utils.encoding import force_bytes
 
 class UserCreateForm(UserCreationForm):
+    username = forms.CharField(required=True,
+                               label='',
+                               widget=forms.TextInput(attrs={'placeholder':"아이디",'class':"form-control"}),
+                               )
     email = forms.EmailField(required=True,
                              label='',
-                             widget=forms.TextInput(attrs={'placeholder':"Email Address",'class':"form-control"}),
+                             widget=forms.TextInput(attrs={'placeholder':"대학교 이메일을 입력해주세요",'class':"form-control",'type':"email"}),
                              )
+    first_name = forms.CharField(required=True,
+                                 label='',
+                                 widget=forms.TextInput(attrs={'placeholder':"First Name : 성",'class':"form-control"}),
+                                 )
+    last_name = forms.CharField(required=True,
+                                label='',
+                                widget=forms.TextInput(attrs={'placeholder':"Last Name : 이름",'class':"form-control"}),
+                                )
+    password1 = forms.CharField(label='',required=True,widget=forms.PasswordInput(attrs={'placeholder':"비밀번호",'class':"form-control",'type':"password"}))
+    password2 = forms.CharField(label='',required=True,widget=forms.PasswordInput(attrs={'placeholder':"비밀번호 확인",'class':"form-control",'type':"password"}))
     class Meta:
         model = User
-        fields = ('email', 'username', 'first_name' , 'last_name', )
+        fields = ('username','email', 'first_name' , 'last_name', )
 
 
 class UserChangeForm(forms.ModelForm):

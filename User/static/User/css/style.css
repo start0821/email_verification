@@ -379,8 +379,8 @@ button {
 
 .form-signin {
   max-width: 380px;
-  height: 300px;
-  padding: 15px 35px 45px;
+  /* height: 300px; */
+  padding: 15px 35px 80px;
   margin: 0 auto;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.1);
@@ -451,4 +451,16 @@ button {
   min-height: 500px;
   letter-spacing: 2px;
   font-family: "Montserrat", sans-serif;
+}
+
+input[type="checkbox"]{
+  -ms-transform: scale(0.3);
+  -moz-transform: scale(0.3);
+  -webkit-transform: scale(0.3);
+  -o-transform: scale(0.3);
+  padding: 10px;
+}
+
+label{
+  text-align:left;
 }
