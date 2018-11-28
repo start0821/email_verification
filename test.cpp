@@ -328,7 +328,7 @@ int main(){
 		}
 	}
 	std::vector<std::vector<int> > boardline;
-	int x[2] = {1,2}, y[2]={2,3};
+	int x[2] = {1,2}, y[2]={2,3};  //허허허
 	vector<vector<int> > board = get_board();
 	boardline = getBoardline(board);
 	for(int i=0;i<boardline.size();i++){
